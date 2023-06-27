@@ -69,10 +69,9 @@ int _printf(char *format, ...)
 			{
 				opts.width = _atoi(format + width_cursor);
 				/* print_opts(opts); */
-				/* buf[len] = va_arg(ap, int); */
-				/* len++; */
-				p_buf.buf[p_buf.cursor] = va_arg(ap, int);
-				p_buf.cursor += 1;
+				/* p_buf.buf[p_buf.cursor] = va_arg(ap, int); */
+				/* p_buf.cursor += 1; */
+				format_char(va_arg(ap,int), opts, &p_buf);
 
 				state = 0;
 				reset_opts(&opts);
@@ -118,17 +117,3 @@ void reset_opts(fmt_options *opts)
 	opts->width = 0;
 }
 
-/**
- * print_opts - prints a fmt_options struct
- * @opts: the struct
- * Return: void
- */
-void print_opts(fmt_options opts)
-{
-	printf(".....................................\n");
-	printf("showplus: %d\n", opts.show_plus);
-	printf("left_align: %d\n", opts.left_align);
-	printf("zero_fill: %d\n", opts.zero_fill);
-	printf("width: %d\n", opts.width);
-	printf(".....................................\n");
-}

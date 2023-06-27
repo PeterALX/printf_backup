@@ -27,5 +27,7 @@ int _pow(int x, int y);
 int _strlen(char *str);
 int _putchar(char c);
 void format_string(char *str, fmt_options opts, print_buf *p_buf);
+void format_char(char c, fmt_options opts, print_buf *p_buf);
+
 #endif /** !_MAIN_ **/
 
