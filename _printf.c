@@ -101,6 +101,7 @@ int _printf(char *format, ...)
 		}
 	}
 	write(0, p_buf.buf, p_buf.cursor);
+	va_end(ap);
 	return (p_buf.cursor);
 }
 
