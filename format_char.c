@@ -3,8 +3,8 @@
 #include <string.h>
 
 /**
- * format_char- formats a string based on format options
- * @char: the string to be formatted
+ * format_char- formats a c based on format options
+ * @c: the char to be formatted
  * @opts: the format options
  * @p_buf: the result is pushed to the print_buffer
  * Return: void
