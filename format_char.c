@@ -4,7 +4,7 @@
 
 /**
  * format_char- formats a string based on format options
- * @str: the string to be formatted
+ * @char: the string to be formatted
  * @opts: the format options
  * @p_buf: the result is pushed to the print_buffer
  * Return: void

@@ -71,7 +71,7 @@ int _printf(char *format, ...)
 				/* print_opts(opts); */
 				/* p_buf.buf[p_buf.cursor] = va_arg(ap, int); */
 				/* p_buf.cursor += 1; */
-				format_char(va_arg(ap,int), opts, &p_buf);
+				format_char(va_arg(ap, int), opts, &p_buf);
 
 				state = 0;
 				reset_opts(&opts);
