@@ -39,13 +39,6 @@ int _printf(char *format, ...) {
 				opts.zero_fill = 1;
 
 			/* specifiers */
-			else if (format[i] == '%')
-			{
-				print_opts(opts);
-				buf[len] = format[i];
-				len++;
-				state = 0;
-			}
 			else if (format[i] == 'c')
 			{
 				print_opts(opts);
@@ -60,31 +53,22 @@ int _printf(char *format, ...) {
 			}
 
 			/* width */
-			else if (format[i] > '0' && format[i] < '9')
+			else if (format[i] > '0' && format[i] <= '9')
 			{
 				width_cursor = i;
-				printf("width: %c\n", format[i]);
 				state = 2;
 			}
 			else
 			{
+				buf[len] = format[i];
 				state = 0;
 				printf("unknown specifier\n");
 			}
 		}
 		else if (state == 2)
 		{
-			if (format[i] == '%')
+			if (format[i] == 'c')
 			{
-				opts.width = atoi(format + width_cursor);
-				print_opts(opts);
-				buf[len] = format[i];
-				len++;
-				state = 0;
-			}
-			else if (format[i] == 'c')
-			{
-				opts.width = atoi(format + width_cursor);
 				print_opts(opts);
 				buf[len] = va_arg(ap, int);
 				len++;
@@ -92,17 +76,17 @@ int _printf(char *format, ...) {
 			}
 			else if (format[i] == 's')
 			{
-				opts.width = atoi(format + width_cursor);
 				print_opts(opts);
 				state = 0;
 			}
-
-			/* width */
-			else if (format[i] >= '0' && format[i] < '9')
+			else if (format[i] >= '0' && format[i] <= '9')
 			{
+
 			}
 			else
 			{
+				buf[len] = format[i];
+				len++;
 				state = 0;
 				printf("unknown specifier\n");
 			}
