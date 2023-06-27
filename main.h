@@ -16,15 +16,16 @@ typedef struct
 {
 	int cursor;
 	int max_size;
-	char *buf;
+	char buf[1024];
 
 } print_buf;
 
+void fill_buf(print_buf *p_buf, char *str, int len);
 int _printf(char *format, ...);
 int _atoi(char *str);
 int _pow(int x, int y);
 int _strlen(char *str);
 int _putchar(char c);
-char *format_string(char *str, fmt_options opts);
+void format_string(char *str, fmt_options opts, print_buf *p_buf);
 #endif /** !_MAIN_ **/
 

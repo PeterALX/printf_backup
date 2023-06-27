@@ -5,13 +5,17 @@
 #include <string.h>
 
 void print_opts(fmt_options opts);
-void fill_buf(char *buf);
 void reset_opts(fmt_options *opts);
 
+/**
+ * _printf - prints stuff based on a format string
+ * @format: the format string
+ * Return: the length of the printed string
+ */
 int _printf(char *format, ...)
 {
-	char buf[1024];
-	int len, i, state, width_cursor;
+	/* char buf[1024]; */
+	int  i, state, width_cursor;
 	va_list ap;
 	fmt_options opts = {0, 0, 0, 0};
 	print_buf p_buf;
@@ -19,14 +23,11 @@ int _printf(char *format, ...)
 
 
 
-	len = 0;
 	state = 0;
 	width_cursor = 0;
 	va_start(ap, format);
 	p_buf.max_size = 1024;
 	p_buf.cursor = 0;
-	p_buf.buf = malloc(sizeof(char) * p_buf.max_size);
-	
 	for (i = 0; format[i]; i++)
 	{
 		if (state == 0)
@@ -34,10 +35,12 @@ int _printf(char *format, ...)
 			if (format[i] == '%')
 			{
 				state = 1;
-			} else
+			}
+			else
 			{
-				buf[len] = format[i];
-				len++;
+				/* p_buf.buf[p_buf.cursor] = format[i]; */
+				/* len++; */
+				fill_buf(&p_buf, format + i, 1);
 			}
 		} else if (state == 1)
 		{
@@ -65,9 +68,12 @@ int _printf(char *format, ...)
 			else if (format[i] == 'c')
 			{
 				opts.width = _atoi(format + width_cursor);
-				print_opts(opts);
-				buf[len] = va_arg(ap, int);
-				len++;
+				/* print_opts(opts); */
+				/* buf[len] = va_arg(ap, int); */
+				/* len++; */
+				p_buf.buf[p_buf.cursor] = va_arg(ap, int);
+				p_buf.cursor += 1;
+
 				state = 0;
 				reset_opts(&opts);
 				width_cursor = 0;
@@ -75,7 +81,7 @@ int _printf(char *format, ...)
 			else if (format[i] == 's')
 			{
 				opts.width = _atoi(format + width_cursor);
-				format_string(va_arg(ap, char *), opts);
+				format_string(va_arg(ap, char *), opts, &p_buf);
 				/* print_opts(opts); */
 				state = 0;
 				reset_opts(&opts);
@@ -84,20 +90,26 @@ int _printf(char *format, ...)
 
 			else
 			{
-				buf[len] = format[i];
-				len++;
+				/* buf[len] = format[i]; */
+				/* len++; */
+				fill_buf(&p_buf, format + i, 1);
 				state = 0;
-				print_opts(opts);
+				/* print_opts(opts); */
 				reset_opts(&opts);
 				width_cursor = 0;
-				printf("unknown specifier\n");
+				/* printf("unknown specifier\n"); */
 			}
 		}
 	}
-	write(0, buf, len);
-	return (len);
+	write(0, p_buf.buf, p_buf.cursor);
+	return (p_buf.cursor);
 }
-void fill_buf(char *buf) {}
+
+/**
+ * reset_opts - reset fmt_options to default
+ * @opts: the format options
+ * Return: void
+ */
 void reset_opts(fmt_options *opts)
 {
 	opts->show_plus = 0;
@@ -105,6 +117,12 @@ void reset_opts(fmt_options *opts)
 	opts->zero_fill = 0;
 	opts->width = 0;
 }
+
+/**
+ * print_opts - prints a fmt_options struct
+ * @opts: the struct
+ * Return: void
+ */
 void print_opts(fmt_options opts)
 {
 	printf(".....................................\n");

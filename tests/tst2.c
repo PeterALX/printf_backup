@@ -1,19 +1,29 @@
 #include "../main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int main(void)
 {
-
 	/* _printf("Character:[%+- 0901c]\n", 'H'); */
-	_printf("Character:[%+- 90c][%c]\n", 'H', 'J');
+	/* _printf("Character:[%+- 90c][%c]\n", 'H', 'J'); */
 	/* _printf("Character:[%+- 90r]\n", 'H'); */
 	/* _printf("Character:[%8rr]\n", 'H'); */
 	_printf("String:[%-30s]\n", "deez!");
-	_printf("String:[%10s]\n", "deez!");
-	/* printf("String:[%s]\n", "I am a string !"); */
+	_printf("String:[%10s][%-10s][%s]\n", "deez!", "", "10");
+	printf("String:[%s]\n", "I am a string !");
+
+	/* pbuf */
+	/* print_buf p_buf = {.buf = NULL, .max_size = 1024, .cursor = 0}; */
+	/* p_buf.buf = malloc(sizeof(char) * p_buf.max_size); */
+	/* fill_buf(&p_buf, "seez\n", 2); */
+	/* fill_buf(&p_buf, "", 1); */
+	/* fill_buf(&p_buf, "deez\n", 5); */
+	/* write(1, p_buf.buf, p_buf.cursor); */
 
 	/*strlen*/
 	/* printf("strlen: %d\n", _strlen("")); */
+
 	/* atoi */
 	/* printf("%d\n", _atoi("0")); */
 	/* printf("%d\n", _atoi("-0")); */
