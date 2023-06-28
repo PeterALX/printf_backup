@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include "../main.h"
 
 /**
  * main - Entry point
@@ -14,6 +14,8 @@ int main(void)
 
 	len = _printf("man gcc:\n%s", str);
 	len2 = printf("man gcc:\n%s", str);
+	/* len2 = 0; */
+	printf("%d %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
 	{

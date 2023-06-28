@@ -43,5 +43,6 @@ void format_string(char *str, fmt_options opts, print_buf *p_buf)
 		}
 		/* strncpy(formatted_string + i, str, lenstr); */
 		fill_buf(p_buf, str, lenstr);
+		/* fill_buf(p_buf, str, 1024); */
 	}
 }

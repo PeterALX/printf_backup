@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * fill_buf - pushes a string to the print_buffer
@@ -11,18 +12,25 @@ void fill_buf(print_buf *p_buf, char *str, int len)
 {
 	int i;
 
-	i = 0;
+	len = _strlen(str) < len ? _strlen(str) : len;
 
-	if (_strlen(str) + p_buf->cursor > p_buf->max_size)
+	/* if (len + p_buf->cursor >= p_buf->max_size) */
+	/* { */
+	/* 	write(1, p_buf->buf, p_buf->cursor); */
+	/* 	p_buf->cursor = 0; */
+	/* } */
+	i = 0;
+	while (i < len)
 	{
-		write(1, p_buf->buf, p_buf->cursor);
-		p_buf->cursor = 0;
-	}
-	while (str[i] && i < len)
-	{
-		p_buf->buf[i + p_buf->cursor] = str[i];
+		if (p_buf->cursor >= p_buf->max_size)
+		{
+			write(1, p_buf->buf, p_buf->cursor);
+			p_buf->cursor = 0;
+		}
+		p_buf->buf[p_buf->cursor] = str[i];
+		p_buf->cursor++;
+		p_buf->bytes_filled++;
 		i++;
 	}
-	p_buf->cursor += i;
-	p_buf->bytes_filled += i;
+	/* printf("\ncursor: %d\n", p_buf->cursor); */
 }
