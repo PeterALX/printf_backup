@@ -38,8 +38,7 @@ int _printf(char *format, ...)
 			}
 		} else if (state == 1)
 		{
-			/* opts */
-			if (format[i] == '+' && width_cursor == 0)
+			if (format[i] == '+' && width_cursor == 0)/* opts */
 				opts.show_plus = 1;
 			else if (format[i] == ' ' && width_cursor == 0)
 				opts.show_plus = 2;
@@ -48,23 +47,16 @@ int _printf(char *format, ...)
 			else if (format[i] == '0' && width_cursor == 0)
 				opts.zero_fill = 1;
 
-			/* width */
-			else if (format[i] > '0' && format[i] <= '9' && width_cursor == 0)
+			else if (format[i] > '0' && format[i] <= '9' && width_cursor == 0)/* width */
 			{
 				width_cursor = i;
 			}
-			else if (width_cursor > 0 && format[i] >= '0' && format[i] <= '9')
-			{
-
-			}
-
-			/* specifiers */
-			else if (format[i] == 'c')
+			else if (width_cursor > 0 && format[i] >= '0' && format[i] <= '9'){}
+			else if (format[i] == 'c')/* specifiers */
 			{
 				opts.width = _atoi(format + width_cursor);
 				/* print_opts(opts); */
-				format_char(va_arg(ap,int), opts, &p_buf);
-
+				format_char(va_arg(ap, int), opts, &p_buf);
 				state = 0;
 				reset_opts(&opts);
 				width_cursor = 0;
@@ -73,24 +65,21 @@ int _printf(char *format, ...)
 			{
 				opts.width = _atoi(format + width_cursor);
 				format_string(va_arg(ap, char *), opts, &p_buf);
-				/* print_opts(opts); */
 				state = 0;
 				reset_opts(&opts);
 				width_cursor = 0;
 			}
-
 			else
 			{
 				fill_buf(&p_buf, format + i, 1);
 				state = 0;
-				/* print_opts(opts); */
 				reset_opts(&opts);
 				width_cursor = 0;
-				/* printf("unknown specifier\n"); */
 			}
 		}
 	}
 	write(1, p_buf.buf, p_buf.cursor);
+	va_end(ap);
 	return (p_buf.cursor);
 }
 

@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * fill_buf - pushes a string to the print_buffer 
+ * fill_buf - pushes a string to the print_buffer
  * @p_buf: the print_buffer being appended into
  * @str: the string to fill it with
  * @len: the length of the string to be filled
