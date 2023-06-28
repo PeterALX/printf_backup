@@ -20,7 +20,7 @@ int _printf(char *format, ...)
 	print_buf p_buf;
 
 	if (!format)
-		return (0);
+		return (-1);
 
 	state = 0;
 	width_cursor = 0;
