@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 
 /**
  * format_string - formats a string based on format options

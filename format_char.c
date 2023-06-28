@@ -1,6 +1,4 @@
-
 #include "main.h"
-#include <string.h>
 
 /**
  * format_char- formats a c based on format options
@@ -14,7 +12,7 @@ void format_char(char c, fmt_options opts, print_buf *p_buf)
 	int len;
 	int i;
 	
-	c = c == '\0' ? '\n' : c;
+	c = c == '\0' ? ' ' : c;
 	len = opts.width > 1 ? opts.width : 1;
 	if (opts.left_align)
 	{

@@ -79,9 +79,25 @@ int _printf(char *format, ...)
 				reset_opts(&opts);
 				width_cursor = 0;
 			}
+			else if (format[i] == 'd')
+			{
+				opts.width = _atoi(format + width_cursor);
+				format_int(va_arg(ap, int), opts, &p_buf);
+				state = 0;
+				reset_opts(&opts);
+				width_cursor = 0;
+			}
+			else if (format[i] == 'i')
+			{
+				opts.width = _atoi(format + width_cursor);
+				format_int(va_arg(ap, int), opts, &p_buf);
+				state = 0;
+				reset_opts(&opts);
+				width_cursor = 0;
+			}
 			else
 			{
-				if (format[i] != '%')
+				if (format[i] != '%') /* I'm skeptical */
 					fill_buf(&p_buf, "%", 1);
 				fill_buf(&p_buf, format + i, 1);
 				state = 0;
@@ -107,18 +123,3 @@ void reset_opts(fmt_options *opts)
 	opts->zero_fill = 0;
 	opts->width = 0;
 }
-
-/**
- * print_opts - prints a fmt_options struct
- * @opts: the struct
- * Return: void
- */
-/* void print_opts(fmt_options opts) */
-/* { */
-/* 	printf(".....................................\n"); */
-/* 	printf("showplus: %d\n", opts.show_plus); */
-/* 	printf("left_align: %d\n", opts.left_align); */
-/* 	printf("zero_fill: %d\n", opts.zero_fill); */
-/* 	printf("width: %d\n", opts.width); */
-/* 	printf(".....................................\n"); */
-/* } */
