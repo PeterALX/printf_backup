@@ -14,14 +14,10 @@ void reset_opts(fmt_options *opts);
  */
 int _printf(char *format, ...)
 {
-	/* char buf[1024]; */
 	int  i, state, width_cursor;
 	va_list ap;
 	fmt_options opts = {0, 0, 0, 0};
 	print_buf p_buf;
-	char *fmt;
-
-
 
 	state = 0;
 	width_cursor = 0;
@@ -38,8 +34,6 @@ int _printf(char *format, ...)
 			}
 			else
 			{
-				/* p_buf.buf[p_buf.cursor] = format[i]; */
-				/* len++; */
 				fill_buf(&p_buf, format + i, 1);
 			}
 		} else if (state == 1)
@@ -69,10 +63,7 @@ int _printf(char *format, ...)
 			{
 				opts.width = _atoi(format + width_cursor);
 				/* print_opts(opts); */
-				/* buf[len] = va_arg(ap, int); */
-				/* len++; */
-				p_buf.buf[p_buf.cursor] = va_arg(ap, int);
-				p_buf.cursor += 1;
+				format_char(va_arg(ap,int), opts, &p_buf);
 
 				state = 0;
 				reset_opts(&opts);
@@ -90,8 +81,6 @@ int _printf(char *format, ...)
 
 			else
 			{
-				/* buf[len] = format[i]; */
-				/* len++; */
 				fill_buf(&p_buf, format + i, 1);
 				state = 0;
 				/* print_opts(opts); */
@@ -101,7 +90,7 @@ int _printf(char *format, ...)
 			}
 		}
 	}
-	write(0, p_buf.buf, p_buf.cursor);
+	write(1, p_buf.buf, p_buf.cursor);
 	return (p_buf.cursor);
 }
 
@@ -123,12 +112,12 @@ void reset_opts(fmt_options *opts)
  * @opts: the struct
  * Return: void
  */
-void print_opts(fmt_options opts)
-{
-	printf(".....................................\n");
-	printf("showplus: %d\n", opts.show_plus);
-	printf("left_align: %d\n", opts.left_align);
-	printf("zero_fill: %d\n", opts.zero_fill);
-	printf("width: %d\n", opts.width);
-	printf(".....................................\n");
-}
+/* void print_opts(fmt_options opts) */
+/* { */
+/* 	printf(".....................................\n"); */
+/* 	printf("showplus: %d\n", opts.show_plus); */
+/* 	printf("left_align: %d\n", opts.left_align); */
+/* 	printf("zero_fill: %d\n", opts.zero_fill); */
+/* 	printf("width: %d\n", opts.width); */
+/* 	printf(".....................................\n"); */
+/* } */

@@ -5,10 +5,11 @@
 
 int main(void)
 {
-	/* _printf("Character:[%+- 0901c]\n", 'H'); */
-	/* _printf("Character:[%+- 90c][%c]\n", 'H', 'J'); */
-	/* _printf("Character:[%+- 90r]\n", 'H'); */
-	/* _printf("Character:[%8rr]\n", 'H'); */
+	_printf("Character:[%+- 09c]\n", 'H');
+	_printf("Character:[%+ 10c][%c]\n", 'H', 'J');
+	_printf("Character:[%+ 01c][%c]\n", 'H', 'J');
+	_printf("Character:[%+- 90r]\n", 'H');
+	_printf("Character:[%8rr]\n", 'H');
 	_printf("String:[%-30s]\n", "deez!");
 	_printf("String:[%10s][%-10s][%s]\n", "deez!", "", "10");
 	printf("String:[%s]\n", "I am a string !");
