@@ -19,6 +19,9 @@ int _printf(char *format, ...)
 	fmt_options opts = {0, 0, 0, 0};
 	print_buf p_buf;
 
+	if (!format)
+		return (0);
+
 	state = 0;
 	width_cursor = 0;
 	va_start(ap, format);
