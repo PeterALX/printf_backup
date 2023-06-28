@@ -12,10 +12,17 @@ void fill_buf(print_buf *p_buf, char *str, int len)
 	int i;
 
 	i = 0;
+
+	if (_strlen(str) + p_buf->cursor > p_buf->max_size)
+	{
+		write(1, p_buf->buf, p_buf->cursor);
+		p_buf->cursor = 0;
+	}
 	while (str[i] && i < len)
 	{
 		p_buf->buf[i + p_buf->cursor] = str[i];
 		i++;
 	}
 	p_buf->cursor += i;
+	p_buf->bytes_filled += i;
 }

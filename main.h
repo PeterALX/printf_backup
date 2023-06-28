@@ -17,6 +17,7 @@ typedef struct
 {
 	int cursor;
 	int max_size;
+	int bytes_filled;
 	char buf[1024];
 
 } print_buf;

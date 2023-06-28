@@ -23,6 +23,7 @@ int _printf(char *format, ...)
 	width_cursor = 0;
 	va_start(ap, format);
 	p_buf.max_size = 1024;
+	p_buf.bytes_filled = 0;
 	p_buf.cursor = 0;
 	for (i = 0; format[i]; i++)
 	{
@@ -80,7 +81,7 @@ int _printf(char *format, ...)
 	}
 	write(1, p_buf.buf, p_buf.cursor);
 	va_end(ap);
-	return (p_buf.cursor);
+	return (p_buf.bytes_filled);
 }
 
 /**
