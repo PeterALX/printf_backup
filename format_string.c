@@ -14,6 +14,9 @@ void format_string(char *str, fmt_options opts, print_buf *p_buf)
 	int lenstr;
 	int i;
 
+	if (!str)
+		str = "(null)";
+
 	lenstr = _strlen(str);
 	len = lenstr > opts.width ? lenstr : opts.width;
 	if (opts.left_align)
