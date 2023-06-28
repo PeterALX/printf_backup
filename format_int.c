@@ -34,6 +34,11 @@ void format_int(int k, fmt_options opts, print_buf *p_buf)
 	{
 		fill_buf(p_buf, "-", 1);
 	}
+	else if (opts.show_plus)
+	{
+		fill_buf(p_buf, "+", 1);
+
+	}
 	i = len;
 	place_value = _pow(10, len - 1);
 	while (i > 0)

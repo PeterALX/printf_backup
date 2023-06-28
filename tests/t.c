@@ -6,8 +6,8 @@
 int main(void)
 {
 	/* _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0); */
-	_printf("%d, %d\n", 1024, -1024);
-	_printf("%d\n", 1);
+	_printf("%+d, %d\n", 1024, -1024);
+	_printf("%+d\n", 1);
 	_printf("%d %d\n", 0, 0);
 
 	/* pbuf */
