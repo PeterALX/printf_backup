@@ -22,8 +22,8 @@ int main(void)
 		return (1);
 	}
 	printf("....................................\n");
-	len = _printf("K%" );
-	len2 = printf("K%");
+	len = _printf("%" );
+	len2 = printf("%");
 	printf("\n%d %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

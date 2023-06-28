@@ -14,7 +14,7 @@ void format_char(char c, fmt_options opts, print_buf *p_buf)
 	int len;
 	int i;
 	
-	c = c == '\0' ? ' ' : c;
+	c = c == '\0' ? '\n' : c;
 	len = opts.width > 1 ? opts.width : 1;
 	if (opts.left_align)
 	{
