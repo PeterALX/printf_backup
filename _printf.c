@@ -81,6 +81,8 @@ int _printf(char *format, ...)
 			}
 			else
 			{
+				if (format[i] != '%')
+					fill_buf(&p_buf, "%", 1);
 				fill_buf(&p_buf, format + i, 1);
 				state = 0;
 				reset_opts(&opts);
