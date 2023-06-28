@@ -34,6 +34,12 @@ int _printf(char *format, ...)
 		{
 			if (format[i] == '%')
 			{
+				if (!format[i + 1])
+				{
+					write(1, p_buf.buf, p_buf.cursor);
+					va_end(ap);
+					return (-1);
+				}
 				state = 1;
 			}
 			else

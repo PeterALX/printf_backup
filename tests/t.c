@@ -5,15 +5,8 @@
 
 int main(void)
 {
-	_printf("Character:[%+- 09c]\n", 'H');
-	_printf("Character:[%+ 10c][%c]\n", 'H', 'J');
-	_printf("Character:[%+ 01c][%c]\n", 'H', 'J');
-	_printf("Character:[%+- 90r]\n", 'H');
-	_printf("Character:[%8rr]\n", 'H');
-	_printf("String:[%-30s]\n", "deez!");
-	_printf("String:[%10s][%-10s][%s]\n", "deez!", "", "10");
-	printf("String:[%s]\n", "I am a string !");
-	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	/* _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0); */
+	_printf("%");
 
 	/* pbuf */
 	/* print_buf p_buf = {.max_size = 1024, .cursor = 0}; */

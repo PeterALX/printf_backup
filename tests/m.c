@@ -21,5 +21,28 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
+	printf("....................................\n");
+	len = _printf("K%" );
+	len2 = printf("K%");
+	printf("\n%d %d\n", len, len2);
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	printf("....................................\n");
+	len = _printf("%!\n");
+	len2 = printf("%!\n");
+	printf("%d %d\n", len, len2);
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	printf("....................................\n");
 	return (0);
 }
