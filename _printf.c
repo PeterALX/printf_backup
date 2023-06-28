@@ -14,7 +14,7 @@ void reset_opts(fmt_options *opts);
  */
 int _printf(char *format, ...)
 {
-	int  i, state, width_cursor, start_parse;
+	int  i, state, width_cursor;
 	va_list ap;
 	fmt_options opts = {0, 0, 0, 0};
 	print_buf p_buf;
@@ -41,7 +41,6 @@ int _printf(char *format, ...)
 					return (-1);
 				}
 				state = 1;
-				start_parse = i;
 			}
 			else
 			{
@@ -82,7 +81,7 @@ int _printf(char *format, ...)
 			}
 			else
 			{
-				fill_buf(&p_buf, format + start_parse, i - start_parse + 1);
+				fill_buf(&p_buf, format + i, 1);
 				state = 0;
 				reset_opts(&opts);
 				width_cursor = 0;
